@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>SmallBankApp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-image: url("https://images.squarespace-cdn.com/content/v1/5168444ee4b0f1cbdee9df36/1654373779847-TN528UMUVKP6YRWESBKT/image-asset.jpeg"); /* ???? ? ???????? ??????????? */
+        background-size: cover;
+    }
+</style>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#"><img src="https://www.nav.com/wp-content/uploads/2020/04/Coins-1.png" width="50" height="50" alt="logo"></a>
+    <a class="navbar-brand" href="#"><h5>Bank i Tochka</h5></a>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse justify-content-end"  id="collapsibleNavbar">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Cards</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/viewDashboard}">Payments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Add Card</h2>
+
+    <form action="#" th:action="@{/saveCard}" th:object="${card}" method="POST">
+        <select name="currency" th:field="*{currency}">
+            <option  th:each="currency : ${T(com.example.smallbankapp.model.Currency).values()}"
+                    th:value="${currency}" th:text="${currency}"></option>
+        </select>
+        <button type="submit" class="btn btn-primary col-2"> Save Card</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/index}"> Back to Main</a>
+</div>
+</body>
+
+</html>

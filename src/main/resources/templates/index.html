@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Bank i Tochka</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+</head>
+
+<style>
+  body {
+background-size: cover;
+    background-image: url("https://i.postimg.cc/7LVBQWpM/Web-Photo-Editor.jpg");
+  }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#"><img src="https://www.nav.com/wp-content/uploads/2020/04/Coins-1.png" width="50" height="50" alt="logo"></a>
+  <a class="navbar-brand" href="#"><h5>Bank i Tochka</h5></a>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <style>
+    nav {
+      -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.40);
+      -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.40);
+      box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.40);
+      border-radius: 4px;
+      opacity: 80%;
+      background-color: black;
+      color: black;
+    }
+
+  </style>
+  <div class="collapse navbar-collapse justify-content-end"  id="collapsibleNavbar">
+
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/}">Cards</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/landing}">Payments</a>
+      </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}" th:data-confirm-delete="|Are you sure you want to logout?|"
+           onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container my-2">
+
+  <h1>Cards </h1>
+  <style>
+    table {
+      -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.10);
+      -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.10);
+      box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.10);
+      border-radius: 25px;
+      row-gap: 10px;
+      cursor: pointer;
+      background-color: gray;
+      opacity: 80%;
+
+    }
+    btn  {
+      opacity: 80%;
+    }
+  </style>
+  <a th:href="@{/showNewCardForm}" class="btn btn-primary btn-sm mb-3"> <img src="data:image/png;base64,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" width="20" /> Add Card </a>
+    <table  class="table table-light  table-striped table-borderless table-responsive-md">
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Currency</th>
+      <th>Balance</th>
+      <th>Expiration Date</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <style>
+      tr:hover {
+        border-radius: 25px;
+        border-color: lightgray;
+        border-style: ridge;
+        overflow: hidden;
+
+      }
+    </style>
+    <tr th:each="card:${listCards}">
+
+      <td th:onclick="'window.location.href = \'' + @{/showFormForUpdate/{id}(id=${card.id})} + '\''" th:text="${card.number}"></td>
+        <td th:text="${card.currency}"> </td>
+      <td th:text="${card.balance}"></td>
+      <td th:text="${card.expirationDate}"></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
